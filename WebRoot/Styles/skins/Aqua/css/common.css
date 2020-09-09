@@ -1,0 +1,6 @@
+﻿.PageMain{margin:0 5px 0 5px;}
+.title1{background:url(../icons/communication.gif) no-repeat left center; clear:both; margin-bottom:5px;height:28px; 
+width:auto; line-height:28px; font-weight:bold; font-size:12px; color:#333; padding-left:19px;border-bottom:solid 1px #ebebeb;}
+.DialogMain{padding-top:10px;}
+
+ .ajaxloading{ position:absolute; right:0; top:0; padding:4px; color:White; background:#6287AC; z-index:99999; border-left:1px solid #53779D; border-bottom:1px solid #53779D;filter:alpha(opacity=70);opacity:0.70;}

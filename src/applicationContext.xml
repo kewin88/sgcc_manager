@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- ds-->
+	<bean id="DataSourceBean" class="cn.com.sgcc.ds.DataSourceImpl">
+		<property name="driver" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost/ac"/>
+		<property name="user" value="root"/>
+		<!--<property name="password" value="zmxncbv"/>  -->
+		<property name="password" value="123123"/>
+	</bean>
+
+	<!-- dao -->
+	<bean id="UserDaoBean" class="cn.com.sgcc.dao.UserDaoImpl">
+		<property name="dataSource" ref="DataSourceBean"/>
+	</bean>
+	<bean id="ResourceDaoBean" class="cn.com.sgcc.dao.ResourceDaoImpl">
+		<property name="dataSource" ref="DataSourceBean"/>
+	</bean>
+	<bean id="IpRangeDaoBean" class="cn.com.sgcc.dao.IpRangeDaoImpl">
+		<property name="dataSource" ref="DataSourceBean"/>
+	</bean>
+
+	<!-- db -->
+	<bean id="DatabaseLayerBean" class="cn.com.sgcc.db.DatabaseLayer">
+		<property name="userDao" ref="UserDaoBean"/>
+		<property name="resourceDao" ref="ResourceDaoBean"/>
+		<property name="ipRangeDao" ref="IpRangeDaoBean"/>
+	</bean>
+
+	<!-- crypto -->
+	<bean id="CipherBean" class="cn.com.sgcc.crypto.CipherImpl">
+		<property name="cryptoAlgorithm" value="AES"/>
+		<property name="cryptoMode" value="CBC"/>
+		<property name="cryptoPadding" value="ISO10126Padding"/>
+		<property name="cryptoKeySize" value="128"/>
+		<property name="cryptoIvSize" value="128"/>
+		<property name="sourceSuffix" value=".pdf"/>
+		<property name="destinationSuffix" value=".gwbz"/>
+		<property name="packager" ref="PackagerBean"/>
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+	</bean>
+	
+<!-- 		<bean id="UpLoadBean" class="cn.com.sgcc.vo.UpLoad">
+		<property name="cryptoAlgorithm" value="AES"/>
+		<property name="cryptoMode" value="CBC"/>
+		<property name="cryptoPadding" value="ISO10126Padding"/>
+		<property name="cryptoKeySize" value="128"/>
+		<property name="cryptoIvSize" value="128"/>
+		<property name="sourceSuffix" value=".gwbz"/>
+		<property name="destinationSuffix" value=".gwbz"/>
+		<property name="packager" ref="PackagerBean"/>
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+	</bean> -->
+
+	<!-- packager -->
+	<bean id="PackagerBean" class="cn.com.sgcc.packager.ZipPackager">
+		<property name="acUrl" value=""/>
+	</bean>
+
+	<bean id="UserActionBean" class="cn.com.sgcc.action.UserAction">
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+	</bean>
+	<!-- ui -->
+<!-- 	<bean id="EncryptPanelBean" class="cn.com.sgcc.ui.BatchEncryptPanel">
+		<property name="cipher" ref="CipherBean"/>
+	</bean>
+	<bean id="IpConfigPanelBean" class="cn.com.sgcc.ui.IpRangeConfigPanel">
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+	</bean>
+	<bean id="RightsConfigPanelBean" class="cn.com.sgcc.ui.RightsConfigPanel">
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+	</bean>
+	<bean id="LoginPanelBean" class="cn.com.sgcc.ui.LoginPanel">
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+		<property name="mainFrame" ref="MainFrameBean"/>
+	</bean>
+	<bean id="UserManagePanelBean" class="cn.com.sgcc.ui.UserManagePanel">
+		<property name="databaseLayer" ref="DatabaseLayerBean"/>
+	</bean>
+	<bean id="LogPanelBean" class="cn.com.sgcc.ui.LogPanel"></bean>
+	<bean id="LoginFrameBean" class="cn.com.sgcc.ui.LoginFrame">
+		<property name="loginPanel" ref="LoginPanelBean"/>
+	</bean>
+	<bean id="FileTransmissionPanelBean" class="cn.com.sgcc.ui.FileTransmissionPanel">
+		<property name="cipher" ref="CipherBean"/>
+	</bean>
+	<bean id="MainFrameBean" class="cn.com.sgcc.ui.MainFrame">
+		<property name="encryptPanel" ref="EncryptPanelBean"/>
+		<property name="ipConfigPanel" ref="IpConfigPanelBean"/>
+		<property name="rightsConfigPanel" ref="RightsConfigPanelBean"/>
+		<property name="userManagePanel" ref="UserManagePanelBean"/>
+		<property name="logPanel" ref="LogPanelBean"/>
+	</bean> -->
+	
+</beans>

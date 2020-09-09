@@ -1,0 +1,20 @@
+body,html{height:100%;}
+body{ padding:0px; margin:0;background:#EAEEF5;overflow:hidden;}  
+.l-link{ display:block; height:26px; line-height:26px; padding-left:10px; text-decoration:underline; color:#333;}
+.l-link2{text-decoration:none; color:#E7E7E7; margin-left:2px;margin-right:2px;}
+.l-layout-top{background:#102A49; color:White;}
+.l-layout-bottom{ background:#E5EDEF; text-align:center;}
+#pageloading{position:absolute; left:0px; top:0px; background:white url('images/loading.gif') no-repeat center; width:100%; height:100%;z-index:99999;}
+.l-link-over{ background:#FFEEAC; border:1px solid #DB9F00;} 
+.l-winbar{ background:#2B5A76; height:30px; position:absolute; left:0px; bottom:0px; width:100%; z-index:99999;}
+.space{ color:#E7E7E7;}
+/* ���� */ 
+.l-topmenu{ margin:0; padding:0; height:50px; line-height:50px; background:url('images/top.jpg') repeat-x bottom;  position:relative; border-top:1px solid #1D438B;  }
+.l-topmenu-logo{ color:#E7E7E7; padding-left:60px; line-height:50px;background:url('images/logo.png') no-repeat;font-size:20px;}
+.l-topmenu-welcome{  position:absolute; height:24px; line-height:24px;  right:30px; top:12px;color:#070A0C;font-size:14px;}
+.l-topmenu-welcome a{ color:#E7E7E7; text-decoration:underline}
+/*Foot*/
+.displaynone{display:none}
+/*���Ź���*/
+#scrollDiv{width: 430px;height: 150px;line-height:15px;border: #ccc 1px solid;overflow: hidden;}
+#scrollDiv li{height: 25px;padding-left: 10px;}
